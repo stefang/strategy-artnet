@@ -1,8 +1,8 @@
 {
-  "name": "@iotes/strategy-dmx",
+  "name": "@iotes/strategy-artnet",
   "version": "0.0.1",
-  "description": "A iotes strategy for use with DMX interfaces",
-  "repository": "git://github.com/stefang/strategy-dmx.git",
+  "description": "A iotes strategy for use with artnet interfaces",
+  "repository": "git://github.com/stefang/strategy-artnet.git",
   "homepage": "https://iotes.dev",
   "main": "build/index.js",
   "publishConfig": {
