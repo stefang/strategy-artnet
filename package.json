@@ -16,7 +16,6 @@
     "@iotes/core": "^0.1.34"
   },
   "dependencies": {
-    "artnet": "^1.4.0"
   },
   "files": [
     "build/**/*"

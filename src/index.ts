@@ -9,7 +9,7 @@ import {
 import { DeviceTypes, StrategyConfig } from './types'
 import { createDeviceFactory } from './deviceFactory'
 
-export const dmxStrategy: Strategy<StrategyConfig, DeviceTypes> = ({
+export const artnetStrategy: Strategy<StrategyConfig, DeviceTypes> = ({
   hostDispatch,
   deviceDispatch,
   hostSubscribe,

@@ -1,11 +1,15 @@
 # `iotes/strategy-artnet`
 
-A strategy to send artnet messages.
+A strategy to send DMX messages via artnet.
 
 ## Usage
 
 ```
-import strategy from '@iotes/strategy-artnet'
+import strategy from '@iotes/strategy-dmx'
 
 // TODO: DEMONSTRATE USAGE
 ```
+
+## How to create a strategy 
+
+Documentation on how to create a strategy is [avaliable here](https://iotes.dev/docs/advanced/strategies)
