@@ -1,7 +1,7 @@
 {
   "name": "@stefang/strategy-artnet",
-  "version": "0.0.7",
-  "description": "A iotes strategy for use with artnet interfaces",
+  "version": "0.0.8",
+  "description": "A iotes strategy for use with artnet interfaces both via an http bridge or in the brightsign node environment",
   "repository": "git://github.com/stefang/strategy-artnet.git",
   "homepage": "https://iotes.dev",
   "main": "build/index.js",

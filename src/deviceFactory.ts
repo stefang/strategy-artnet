@@ -4,8 +4,6 @@ import {
 import { DeviceTypes, StrategyConfig } from './types'
 import http from 'http'
 
-import { fork } from 'child_process'
-
 export const createDeviceFactory = (
   host: { config: HostConfig<StrategyConfig>; connection: any },
   client: ClientConfig,
@@ -13,26 +11,19 @@ export const createDeviceFactory = (
 ): DeviceFactory<DeviceTypes> => {
   const { deviceSubscribe, hostDispatch } = iotes
 
-  const createArtnetNode = async (
-    device: DeviceConfig<'ARTNET_NODE'>,
+  const createArtnetBrightsign = async (
+    device: DeviceConfig<'ARTNET_BRIGHTSIGN'>,
   ) => {
     const { name } = device
 
-    // This doenst work in browser so pointless..
-
-    // const args: string[] = [host.config.host, host.config.port];
-    // const artnetChild = fork('child-artnet.js', args);
-
-    // deviceSubscribe(
-    //   (state: any) => {
-    //     if (state[name] && state[name]?.['@@iotes_storeId']) {
-    //       console.log(`Send Artnet Universe Update Direct:`)
-    //       console.log(state[name]?.payload);
-    //       artnetChild.send(state[name]?.payload);
-    //     }
-    //   },
-    //   [name],
-    // )
+    deviceSubscribe(
+      (state: any) => {
+        if (state[name] && state[name]?.['@@iotes_storeId']) {
+          (window as any).dmxnet.send(state[name]?.payload);
+        }
+      },
+      [name],
+    )
 
     return device;
   }
@@ -95,7 +86,7 @@ export const createDeviceFactory = (
   }
 
   return {
-    ARTNET_NODE: createArtnetNode,
+    ARTNET_BRIGHTSIGN: createArtnetBrightsign,
     ARTNET_BRIDGE: createArtnetBridge,
   }
 }
