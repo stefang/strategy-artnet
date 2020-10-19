@@ -4,7 +4,7 @@ import {
 import { DeviceTypes, StrategyConfig } from './types'
 import http from 'http'
 
-import { fork, ForkOptions } from 'child_process'
+import { fork } from 'child_process'
 
 export const createDeviceFactory = (
   host: { config: HostConfig<StrategyConfig>; connection: any },
@@ -18,19 +18,21 @@ export const createDeviceFactory = (
   ) => {
     const { name } = device
 
-    const args: string[] = [host.config.host, host.config.port];
-    const artnetChild = fork('child-artnet.js', args);
+    // This doenst work in browser so pointless..
 
-    deviceSubscribe(
-      (state: any) => {
-        if (state[name] && state[name]?.['@@iotes_storeId']) {
-          console.log(`Send Artnet Universe Update Direct:`)
-          console.log(state[name]?.payload);
-          artnetChild.send(state[name]?.payload);
-        }
-      },
-      [name],
-    )
+    // const args: string[] = [host.config.host, host.config.port];
+    // const artnetChild = fork('child-artnet.js', args);
+
+    // deviceSubscribe(
+    //   (state: any) => {
+    //     if (state[name] && state[name]?.['@@iotes_storeId']) {
+    //       console.log(`Send Artnet Universe Update Direct:`)
+    //       console.log(state[name]?.payload);
+    //       artnetChild.send(state[name]?.payload);
+    //     }
+    //   },
+    //   [name],
+    // )
 
     return device;
   }
