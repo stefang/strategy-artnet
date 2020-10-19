@@ -1,5 +1,5 @@
 {
-  "name": "@iotes/strategy-artnet",
+  "name": "@stefang/strategy-artnet",
   "version": "0.0.1",
   "description": "A iotes strategy for use with artnet interfaces",
   "repository": "git://github.com/stefang/strategy-artnet.git",
@@ -16,6 +16,7 @@
     "@iotes/core": "^0.1.34"
   },
   "dependencies": {
+    "@stefang/dmxnet": "^0.5.0"
   },
   "files": [
     "build/**/*"

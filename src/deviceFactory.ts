@@ -4,6 +4,8 @@ import {
 import { DeviceTypes, StrategyConfig } from './types'
 import http from 'http'
 
+import { fork, ForkOptions } from 'child_process'
+
 export const createDeviceFactory = (
   host: { config: HostConfig<StrategyConfig>; connection: any },
   client: ClientConfig,
@@ -15,6 +17,21 @@ export const createDeviceFactory = (
     device: DeviceConfig<'ARTNET_NODE'>,
   ) => {
     const { name } = device
+
+    const args: string[] = [host.config.host, host.config.port];
+    const artnetChild = fork('child-artnet.js', args);
+
+    deviceSubscribe(
+      (state: any) => {
+        if (state[name] && state[name]?.['@@iotes_storeId']) {
+          console.log(`Send Artnet Universe Update Direct:`)
+          console.log(state[name]?.payload);
+          artnetChild.send(state[name]?.payload);
+        }
+      },
+      [name],
+    )
+
     return device;
   }
 
@@ -34,7 +51,7 @@ export const createDeviceFactory = (
     deviceSubscribe(
       (state: any) => {
         if (state[name] && state[name]?.['@@iotes_storeId']) {
-          console.log(`Artnet Universe Update:`)
+          console.log(`Send Artnet Universe Update Over Bridge:`)
           console.log(state[name]?.payload);
           const data = JSON.stringify(state[name]?.payload)
           options.headers = {
