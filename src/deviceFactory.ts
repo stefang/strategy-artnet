@@ -19,7 +19,7 @@ export const createDeviceFactory = (
     deviceSubscribe(
       (state: any) => {
         if (state[name] && state[name]?.['@@iotes_storeId']) {
-          (window as any).dmxnet.send(state[name]?.payload);
+          (window as any).dmx.send(state[name]?.payload);
         }
       },
       [name],
