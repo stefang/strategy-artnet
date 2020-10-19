@@ -1,6 +1,6 @@
 {
   "name": "@stefang/strategy-artnet",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A iotes strategy for use with artnet interfaces",
   "repository": "git://github.com/stefang/strategy-artnet.git",
   "homepage": "https://iotes.dev",
