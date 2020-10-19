@@ -1,6 +1,6 @@
 {
   "name": "@stefang/strategy-artnet",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A iotes strategy for use with artnet interfaces",
   "repository": "git://github.com/stefang/strategy-artnet.git",
   "homepage": "https://iotes.dev",
@@ -13,7 +13,7 @@
     "test": "jest ./__tests__/*.test.ts --forceExit"
   },
   "peerDependencies": {
-    "@iotes/core": "^0.1.34"
+    "@iotes/core": "^0.2.9"
   },
   "dependencies": {
     "@stefang/dmxnet": "^0.5.2"
