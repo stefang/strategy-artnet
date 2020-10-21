@@ -18,8 +18,23 @@ export const createDeviceFactory = (
 
     deviceSubscribe(
       (state: any) => {
-        if (state[name] && state[name]?.['@@iotes_storeId']) {
+        if (state[name] && state[name]?.['@@iotes_storeId'] && (window as any).dmx && (window as any).dmx.send) {
           (window as any).dmx.send(state[name]?.payload);
+        } else {
+          hostDispatch(
+            createHostDispatchable(
+              host.config.name,
+              'DEVICE_CONNECT',
+              {
+                deviceName: name,
+                subscriptionPath: `${name}`,
+              },
+              { ...host.config },
+              'ARTNET_BRIGHTSIGN',
+              { message: "Cannot find strategy-artnet-bs-bridge", level: 'ERROR' },
+            ),
+          )
+
         }
       },
       [name],
