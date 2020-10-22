@@ -1,13 +1,10 @@
 {
-  "name": "@stefang/strategy-artnet",
+  "name": "iotes-strategy-artnet",
   "version": "0.0.16",
   "description": "A iotes strategy for use with artnet interfaces both via an http bridge or in the brightsign node environment",
   "repository": "git://github.com/stefang/strategy-artnet.git",
   "homepage": "https://iotes.dev",
   "main": "build/index.js",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "build": "tsc",
     "test": "jest ./__tests__/*.test.ts --forceExit"
@@ -16,7 +13,7 @@
     "@iotes/core": "^0.2.9"
   },
   "dependencies": {
-    "@stefang/dmxnet": "^0.5.3"
+    "dmxnet-nologging": "^0.5.3"
   },
   "files": [
     "build/**/*"
